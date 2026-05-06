@@ -1,0 +1,101 @@
+project: fil_volcap
+node_id: node_001
+node_role: capture
+
+hardware:
+  compute: jetson_agx_orin_64gb
+  carrier: gmsl2_8ch_carrier_to_be_confirmed
+  storage:
+    mount: /data/volcap
+    type: nvme
+    min_write_mbps: 1500
+  sync:
+    mode: external_fsync
+    input: gpio_or_carrier_fsync
+    frame_rate: 30
+
+capture:
+  resolution:
+    width: 1920
+    height: 1200
+  pixel_format: RAW10
+  fps: 30
+  master_format: rawpack
+  preview_format: h264_low_res
+  allow_auto_exposure: false
+  allow_auto_gain: false
+  allow_auto_white_balance: false
+
+cameras:
+  - camera_id: cam_001
+    port_id: 1
+    serial: TBD
+    lens_id: lens_001
+    exposure_us: 5000
+    gain: 1.0
+  - camera_id: cam_002
+    port_id: 2
+    serial: TBD
+    lens_id: lens_002
+    exposure_us: 5000
+    gain: 1.0
+  - camera_id: cam_003
+    port_id: 3
+    serial: TBD
+    lens_id: lens_003
+    exposure_us: 5000
+    gain: 1.0
+  - camera_id: cam_004
+    port_id: 4
+    serial: TBD
+    lens_id: lens_004
+    exposure_us: 5000
+    gain: 1.0
+  - camera_id: cam_005
+    port_id: 5
+    serial: TBD
+    lens_id: lens_005
+    exposure_us: 5000
+    gain: 1.0
+  - camera_id: cam_006
+    port_id: 6
+    serial: TBD
+    lens_id: lens_006
+    exposure_us: 5000
+    gain: 1.0
+  - camera_id: cam_007
+    port_id: 7
+    serial: TBD
+    lens_id: lens_007
+    exposure_us: 5000
+    gain: 1.0
+  - camera_id: cam_008
+    port_id: 8
+    serial: TBD
+    lens_id: lens_008
+    exposure_us: 5000
+    gain: 1.0
+
+preview:
+  enabled: true
+  mosaic: true
+  width_per_camera: 480
+  height_per_camera: 300
+  overlay:
+    camera_id: true
+    fps: true
+    frame_id: true
+    drop_count: true
+    temperature: true
+
+logging:
+  format: jsonl
+  level: info
+  health_interval_ms: 1000
+
+exports:
+  colmap: true
+  openmvg: true
+  openmvs: true
+  nerfstudio: true
+  gsplat: true

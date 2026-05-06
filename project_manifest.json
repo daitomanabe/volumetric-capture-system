@@ -1,0 +1,18 @@
+{
+  "project": "custom_volumetric_capture_system",
+  "version": "0.1.0",
+  "created_for": "KIBISIGPT",
+  "date": "2026-05-06",
+  "core_assumption": "8 camera global shutter GMSL2 node scalable to 32 and 64 cameras",
+  "primary_compute": "Jetson AGX Orin",
+  "primary_sensor_class": "AR0234 global shutter GMSL2",
+  "sync": "external hardware FSYNC",
+  "master_capture": "RAW10 or RAW12 rawpack",
+  "reconstruction_tools": [
+    "COLMAP",
+    "OpenMVG",
+    "OpenMVS",
+    "Nerfstudio",
+    "gsplat"
+  ]
+}

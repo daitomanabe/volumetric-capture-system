@@ -1,0 +1,25 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+build/
+dist/
+*.egg-info/
+
+# Generated capture data
+logs/
+volcap_data/
+sessions/
+*.rawpack
+*.index.jsonl
+capture_summary.json
+sync_test_report.json
+
+# Local environment
+.env
+.env.*
+!.env.example

@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Volcap Capture Manifest",
+  "type": "object",
+  "required": [
+    "session_id",
+    "created_at",
+    "node_count",
+    "camera_count",
+    "capture",
+    "nodes"
+  ],
+  "properties": {
+    "session_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "operator": {
+      "type": "string"
+    },
+    "node_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "camera_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "calibration_id": {
+      "type": "string"
+    },
+    "lighting_profile": {
+      "type": "string"
+    },
+    "sync_mode": {
+      "type": "string",
+      "enum": [
+        "external_fsync",
+        "software",
+        "test_only"
+      ]
+    },
+    "capture": {
+      "type": "object",
+      "required": [
+        "fps",
+        "width",
+        "height",
+        "pixel_format",
+        "master_format"
+      ],
+      "properties": {
+        "fps": {
+          "type": "number"
+        },
+        "width": {
+          "type": "integer"
+        },
+        "height": {
+          "type": "integer"
+        },
+        "pixel_format": {
+          "type": "string"
+        },
+        "master_format": {
+          "type": "string"
+        },
+        "preview_format": {
+          "type": "string"
+        }
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "node_id",
+          "cameras"
+        ],
+        "properties": {
+          "node_id": {
+            "type": "string"
+          },
+          "hostname": {
+            "type": "string"
+          },
+          "cameras": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "camera_id",
+                "port_id",
+                "serial",
+                "lens_id"
+              ],
+              "properties": {
+                "camera_id": {
+                  "type": "string"
+                },
+                "port_id": {
+                  "type": "integer"
+                },
+                "serial": {
+                  "type": "string"
+                },
+                "lens_id": {
+                  "type": "string"
+                },
+                "exposure_us": {
+                  "type": "number"
+                },
+                "gain": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
