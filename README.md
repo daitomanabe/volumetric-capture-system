@@ -17,6 +17,8 @@
 | Simulated rawpack capture | Implemented |
 | Frame index JSONL | Implemented |
 | Session validation | Implemented |
+| Preflight bandwidth/storage checks | Implemented |
+| QA report generation | Implemented |
 | COLMAP/Nerfstudio export scaffold | Implemented |
 | Real camera GMSL2 ingest | Hardware-dependent, not implemented |
 
@@ -31,9 +33,11 @@ python -m pip install -e ".[dev]"
 
 volcap discover
 volcap health
+volcap preflight --duration 600
 volcap trigger --duration 0.2 --session-id demo_session
 volcap validate-session volcap_data/sessions/demo_session
 volcap sync-test volcap_data/sessions/demo_session
+volcap qa-report volcap_data/sessions/demo_session --write
 volcap export-colmap volcap_data/sessions/demo_session
 volcap export-nerfstudio volcap_data/sessions/demo_session
 ```
@@ -45,7 +49,7 @@ volcap export-nerfstudio volcap_data/sessions/demo_session
 | Path | Purpose |
 |---|---|
 | `config/node_config.yaml` | 8 camera nodeの設定例 |
-| `src/volcap/` | CLI、設定検証、rawpack writer、session validation |
+| `src/volcap/` | CLI、設定検証、rawpack writer、preflight、QA、session validation |
 | `schemas/capture_manifest.schema.json` | Session manifest JSON Schema |
 | `specs/` | ハード、ソフト、pipeline、reconstruction、risk、procurement資料 |
 | `docs/` | 実装状況とデータ契約 |

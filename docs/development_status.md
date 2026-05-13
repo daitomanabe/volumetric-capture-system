@@ -5,13 +5,15 @@
 | Area | Status | Notes |
 |---|---|---|
 | Node configuration loading | Implemented | Reads `config/node_config.yaml` and rejects unsafe auto-exposure settings. |
-| CLI | Implemented | `volcap discover`, `arm`, `trigger`, `health`, `sync-test`, `validate-session`, `export-colmap`, `export-nerfstudio`. |
+| CLI | Implemented | `volcap discover`, `arm`, `trigger`, `health`, `preflight`, `sync-test`, `qa-report`, `validate-session`, `export-colmap`, `export-nerfstudio`. |
+| Preflight checks | Implemented | Estimates RAW write bandwidth, session size, storage margin, sync mode, pixel format, and serial readiness. |
 | Simulated capture backend | Implemented | Writes deterministic rawpack payloads for each configured camera. |
 | Manifest generation | Implemented | Every simulated session writes `manifest.json`. |
 | Frame index JSONL | Implemented | Each camera writes `frames.index.jsonl` with offsets, payload sizes, timestamps, drop flags, and checksums. |
 | Session validation | Implemented | Checks manifest schema, rawpack/index existence, byte offsets, camera count, and frame-id alignment. |
+| QA report generation | Implemented | Produces JSON/Markdown QA reports with validation gates, frame counts, drop counts, and byte totals. |
 | Export scaffolds | Implemented | Creates validated placeholder export folders for COLMAP and Nerfstudio. |
-| Tests | Implemented | Covers config loading, simulated capture, validation, and export scaffold generation. |
+| Tests | Implemented | Covers config loading, preflight, simulated capture, validation, QA, and export scaffold generation. |
 
 ## Hardware-dependent work still required
 

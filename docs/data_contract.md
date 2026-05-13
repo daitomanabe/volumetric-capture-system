@@ -8,6 +8,8 @@ volcap_data/
     <session_id>/
       manifest.json
       capture_summary.json
+      qa_report.json
+      qa_report.md
       nodes/
         node_001/
           logs/
@@ -59,3 +61,14 @@ Each `frames.index.jsonl` row describes one payload in `frames.rawpack`:
 | `checksum` | BLAKE2b checksum for payload verification. |
 
 No frame loss should be silent. If a hardware backend drops a frame, it must write an index row with `dropped: true` and a zero-byte or explicitly documented payload.
+
+## QA report
+
+`volcap qa-report <session_dir> --write` creates:
+
+| File | Meaning |
+|---|---|
+| `qa_report.json` | Machine-readable validation gates and per-camera stats. |
+| `qa_report.md` | Human-readable session QA summary. |
+
+The initial gates check manifest/index validity, configured camera presence, frame count alignment, and dropped frame count. Hardware-specific gates such as LED flash alignment and calibration reprojection error should be added once real capture and calibration data exist.
